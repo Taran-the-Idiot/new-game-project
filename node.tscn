@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=4 uid="uid://5abiph5kuhdv"]
+[gd_scene load_steps=12 format=4 uid="uid://5abiph5kuhdv"]
 
 [ext_resource type="Script" uid="uid://dhbblqlf5yjby" path="res://character_body.gd" id="1_j2q8x"]
-[ext_resource type="Texture2D" uid="uid://cijrju2phwscf" path="res://icon.svg" id="2_112p8"]
+[ext_resource type="Texture2D" uid="uid://bb1fp4fh8rend" path="res://trump.png" id="2_112p8"]
 [ext_resource type="Texture2D" uid="uid://dd45j2st64ebe" path="res://green.png" id="3_112p8"]
+[ext_resource type="Script" uid="uid://crrtw4btavbt8" path="res://enemy.gd" id="4_bss38"]
+[ext_resource type="Texture2D" uid="uid://cijrju2phwscf" path="res://icon.svg" id="5_tda05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2u21"]
-size = Vector2(126, 127)
+size = Vector2(56, 114)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2u21"]
 texture = ExtResource("3_112p8")
@@ -378,21 +380,58 @@ texture = ExtResource("3_112p8")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e2u21")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn3nj"]
+size = Vector2(112, 114.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bss38"]
+size = Vector2(19, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tda05"]
+size = Vector2(22, 20)
+
 [node name="Node" type="Node"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 script = ExtResource("1_j2q8x")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture_filter = 1
+scale = Vector2(2, 2)
 texture = ExtResource("2_112p8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, -0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(2, 5)
 shape = SubResource("RectangleShape2D_e2u21")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-scale = Vector2(5, 5)
-tile_map_data = PackedByteArray("AAD//wEAAAACAAMAAAD//wIAAAACAAQAAAD//wMAAAACAAUAAAD//wQAAAACAAYAAAD//wUAAAACAAcAAAAAAAEAAAADAAMAAAAAAAIAAAADAAQAAAAAAAMAAAADAAUAAAAAAAQAAAADAAYAAAAAAAUAAAADAAcAAAABAAEAAAAEAAMAAAABAAIAAAAEAAQAAAABAAMAAAAEAAUAAAABAAQAAAAEAAYAAAABAAUAAAAEAAcAAAACAAEAAAAFAAMAAAACAAIAAAAFAAQAAAACAAMAAAAFAAUAAAACAAQAAAAFAAYAAAACAAUAAAAFAAcAAAADAAEAAAACAAMAAAADAAIAAAACAAQAAAADAAMAAAACAAUAAAADAAQAAAACAAYAAAADAAUAAAACAAcAAAAEAAEAAAADAAMAAAAEAAIAAAADAAQAAAAEAAMAAAADAAUAAAAEAAQAAAADAAYAAAAEAAUAAAADAAcAAAD5/wEAAAACAAMAAAD5/wIAAAACAAQAAAD5/wMAAAACAAUAAAD5/wQAAAACAAYAAAD5/wUAAAACAAcAAAD6/wEAAAADAAMAAAD6/wIAAAADAAQAAAD6/wMAAAADAAUAAAD6/wQAAAADAAYAAAD6/wUAAAADAAcAAAD7/wEAAAAEAAMAAAD7/wIAAAAEAAQAAAD7/wMAAAAEAAUAAAD7/wQAAAAEAAYAAAD7/wUAAAAEAAcAAAD8/wEAAAAFAAMAAAD8/wIAAAAFAAQAAAD8/wMAAAAFAAUAAAD8/wQAAAAFAAYAAAD8/wUAAAAFAAcAAAD9/wEAAAAGAAMAAAD9/wIAAAAGAAQAAAD9/wMAAAAGAAUAAAD9/wQAAAAGAAYAAAD9/wUAAAAGAAcAAAD+/wEAAAAHAAMAAAD+/wIAAAAHAAQAAAD+/wMAAAAHAAUAAAD+/wQAAAAHAAYAAAD+/wUAAAAHAAcAAAAFAAEAAAAEAAMAAAAFAAIAAAAEAAQAAAAFAAMAAAAEAAUAAAAFAAQAAAAEAAYAAAAFAAUAAAAEAAcAAAAGAAEAAAAFAAMAAAAGAAIAAAAFAAQAAAAGAAMAAAAFAAUAAAAGAAQAAAAFAAYAAAAGAAUAAAAFAAcAAAAHAAEAAAAGAAMAAAAHAAIAAAAGAAQAAAAHAAMAAAAGAAUAAAAHAAQAAAAGAAYAAAAHAAUAAAAGAAcAAAAIAAEAAAAHAAMAAAAIAAIAAAAHAAQAAAAIAAMAAAAHAAUAAAAIAAQAAAAHAAYAAAAIAAUAAAAHAAcAAAA=")
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAD//wEAAAACAAMAAAAAAAEAAAADAAMAAAABAAEAAAAEAAMAAAACAAEAAAAFAAMAAAADAAEAAAACAAMAAAAEAAEAAAADAAMAAAD5/wEAAAACAAMAAAD6/wEAAAADAAMAAAD7/wEAAAAEAAMAAAD8/wEAAAAFAAMAAAD9/wEAAAAGAAMAAAD+/wEAAAAHAAMAAAAFAAEAAAAEAAMAAAAGAAEAAAAFAAMAAAAHAAEAAAAGAAMAAAAIAAEAAAAHAAMAAAAIAAIAAAAHAAUAAAAIAAMAAAAHAAUAAAAIAAQAAAAHAAUAAAAIAAUAAAAHAAUAAAAHAP7/AAAHAAUAAAAIAP7/AAAHAAUAAAAMAP7/AAAHAAUAAAANAP7/AAAHAAUAAAAOAP7/AAAHAAUAAAAMAAEAAAAHAAUAAAAMAAIAAAAHAAUAAAAMAAMAAAAHAAUAAAAMAAQAAAAHAAUAAAAMAAUAAAAHAAUAAAANAAEAAAAHAAUAAAAOAAEAAAAHAAUAAAAPAAEAAAAHAAUAAAAQAAEAAAAHAAUAAAARAAEAAAAHAAUAAAASAAEAAAAHAAUAAAALAP7/AAAHAAUAAAASAAAAAAAHAAUAAAATAP//AAAHAAUAAAATAAAAAAAHAAUAAAAUAP7/AAAHAAUAAAAUAP//AAAHAAUAAAAVAP7/AAAHAAUAAAAZAP7/AAAHAAUAAAAbAP7/AAAHAAUAAAAaAP7/AAAHAAUAAAAeAAAAAAAHAAUAAAAfAAAAAAAHAAUAAAAWAAIAAAAHAAUAAAAXAAIAAAAHAAUAAAAYAAIAAAAHAAUAAAAQAPz/AAAHAAUAAAARAPz/AAAHAAUAAAAhAP7/AAAHAAUAAAAiAP7/AAAHAAUAAAAjAP7/AAAHAAUAAAAkAP7/AAAHAAUAAAAlAP7/AAAHAAUAAAAlAP//AAAHAAUAAAAlAAAAAAAHAAUAAAAlAAEAAAAHAAUAAAAmAAEAAAAHAAUAAAAmAAIAAAAHAAUAAAAmAAMAAAAHAAUAAAAmAP7/AAAHAAUAAAAnAP7/AAAHAAUAAAAoAP7/AAAHAAUAAAAnAAMAAAAHAAUAAAAnAAIAAAAHAAUAAAAmAAAAAAAHAAUAAAAmAP//AAAHAAUAAAAnAP//AAAHAAUAAAAnAAAAAAAHAAUAAAAnAAEAAAAHAAUAAAAoAAIAAAAHAAUAAAAoAAMAAAAHAAUAAAAoAAEAAAAHAAUAAAAoAAAAAAAHAAUAAAAoAP//AAAHAAUAAAAoAP3/AAAHAAUAAAAoAPz/AAAHAAUAAAAoAPv/AAAHAAUAAAAoAPr/AAAHAAUAAAAoAPn/AAAHAAUAAAAoAPj/AAAHAAUAAAA=")
 tile_set = SubResource("TileSet_bss38")
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+position = Vector2(1054, 20)
+script = ExtResource("4_bss38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+position = Vector2(13.5, -12)
+scale = Vector2(0.867188, 0.890625)
+texture = ExtResource("5_tda05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(14, -11.75)
+shape = SubResource("RectangleShape2D_qn3nj")
+
+[node name="fall" type="Area2D" parent="Enemy"]
+position = Vector2(-77, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/fall"]
+position = Vector2(-4, 61)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Jump" type="Area2D" parent="Enemy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Jump"]
+position = Vector2(86, 1)
+shape = SubResource("RectangleShape2D_tda05")
