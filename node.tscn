@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://5abiph5kuhdv"]
+[gd_scene load_steps=18 format=4 uid="uid://5abiph5kuhdv"]
 
 [ext_resource type="Script" uid="uid://dhbblqlf5yjby" path="res://scripts/character_body.gd" id="1_j2q8x"]
 [ext_resource type="Texture2D" uid="uid://bb1fp4fh8rend" path="res://assets/trump.png" id="2_112p8"]
@@ -11,6 +11,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2u21"]
 size = Vector2(56, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0urt"]
+size = Vector2(17, 114)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2u21"]
 texture = ExtResource("3_112p8")
@@ -438,6 +441,16 @@ scale = Vector2(1.89162, 4.00983)
 text = "YOU WIN"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(-14, 7)
+shape = SubResource("RectangleShape2D_f0urt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(15.5, 6)
+shape = SubResource("RectangleShape2D_f0urt")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(4, 4)
