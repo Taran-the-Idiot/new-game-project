@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -50.0
+const SPEED = 350.0
+const JUMP_VELOCITY = -600.0
 var direction := 1
 
 func _physics_process(delta: float) -> void:
@@ -29,17 +29,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		direction = 0
 		
-	var jump_col = get_node("Jump").has_overlapping_bodies() and is_on_floor()
-	if jump_col:
+	var jump_col = get_node("Jump").has_overlapping_bodies()
+	if jump_col and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-	else:
-		velocity.y = move_toward(velocity.y, 0, JUMP_VELOCITY)
-
-	
-
-	
-		
-	
 	
 	if direction:
 		velocity.x = direction * SPEED

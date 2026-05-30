@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=4 uid="uid://5abiph5kuhdv"]
 
-[ext_resource type="Script" uid="uid://dhbblqlf5yjby" path="res://character_body.gd" id="1_j2q8x"]
-[ext_resource type="Texture2D" uid="uid://bb1fp4fh8rend" path="res://trump.png" id="2_112p8"]
+[ext_resource type="Script" uid="uid://dhbblqlf5yjby" path="res://scripts/character_body.gd" id="1_j2q8x"]
+[ext_resource type="Texture2D" uid="uid://bb1fp4fh8rend" path="res://assets/trump.png" id="2_112p8"]
 [ext_resource type="Texture2D" uid="uid://dd45j2st64ebe" path="res://green.png" id="3_112p8"]
-[ext_resource type="Script" uid="uid://crrtw4btavbt8" path="res://enemy.gd" id="4_bss38"]
-[ext_resource type="Texture2D" uid="uid://cijrju2phwscf" path="res://icon.svg" id="5_tda05"]
+[ext_resource type="Script" uid="uid://crrtw4btavbt8" path="res://scripts/enemy.gd" id="4_bss38"]
+[ext_resource type="Texture2D" uid="uid://b14u6qct16duq" path="res://assets/enemy1.png" id="5_bss38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2u21"]
 size = Vector2(56, 114)
@@ -377,11 +377,12 @@ texture = ExtResource("3_112p8")
 13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_bss38"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_e2u21")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn3nj"]
-size = Vector2(112, 114.5)
+size = Vector2(19, 43.3333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bss38"]
 size = Vector2(19, 20)
@@ -400,27 +401,31 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_112p8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(2, 5)
+position = Vector2(1, 6)
 shape = SubResource("RectangleShape2D_e2u21")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAD//wEAAAACAAMAAAAAAAEAAAADAAMAAAABAAEAAAAEAAMAAAACAAEAAAAFAAMAAAADAAEAAAACAAMAAAAEAAEAAAADAAMAAAD5/wEAAAACAAMAAAD6/wEAAAADAAMAAAD7/wEAAAAEAAMAAAD8/wEAAAAFAAMAAAD9/wEAAAAGAAMAAAD+/wEAAAAHAAMAAAAFAAEAAAAEAAMAAAAGAAEAAAAFAAMAAAAHAAEAAAAGAAMAAAAIAAEAAAAHAAMAAAAIAAIAAAAHAAUAAAAIAAMAAAAHAAUAAAAIAAQAAAAHAAUAAAAIAAUAAAAHAAUAAAAHAP7/AAAHAAUAAAAIAP7/AAAHAAUAAAAMAP7/AAAHAAUAAAANAP7/AAAHAAUAAAAOAP7/AAAHAAUAAAAMAAEAAAAHAAUAAAAMAAIAAAAHAAUAAAAMAAMAAAAHAAUAAAAMAAQAAAAHAAUAAAAMAAUAAAAHAAUAAAANAAEAAAAHAAUAAAAOAAEAAAAHAAUAAAAPAAEAAAAHAAUAAAAQAAEAAAAHAAUAAAARAAEAAAAHAAUAAAASAAEAAAAHAAUAAAALAP7/AAAHAAUAAAASAAAAAAAHAAUAAAATAP//AAAHAAUAAAATAAAAAAAHAAUAAAAUAP7/AAAHAAUAAAAUAP//AAAHAAUAAAAVAP7/AAAHAAUAAAAZAP7/AAAHAAUAAAAbAP7/AAAHAAUAAAAaAP7/AAAHAAUAAAAeAAAAAAAHAAUAAAAfAAAAAAAHAAUAAAAWAAIAAAAHAAUAAAAXAAIAAAAHAAUAAAAYAAIAAAAHAAUAAAAQAPz/AAAHAAUAAAARAPz/AAAHAAUAAAAhAP7/AAAHAAUAAAAiAP7/AAAHAAUAAAAjAP7/AAAHAAUAAAAkAP7/AAAHAAUAAAAlAP7/AAAHAAUAAAAlAP//AAAHAAUAAAAlAAAAAAAHAAUAAAAlAAEAAAAHAAUAAAAmAAEAAAAHAAUAAAAmAAIAAAAHAAUAAAAmAAMAAAAHAAUAAAAmAP7/AAAHAAUAAAAnAP7/AAAHAAUAAAAoAP7/AAAHAAUAAAAnAAMAAAAHAAUAAAAnAAIAAAAHAAUAAAAmAAAAAAAHAAUAAAAmAP//AAAHAAUAAAAnAP//AAAHAAUAAAAnAAAAAAAHAAUAAAAnAAEAAAAHAAUAAAAoAAIAAAAHAAUAAAAoAAMAAAAHAAUAAAAoAAEAAAAHAAUAAAAoAAAAAAAHAAUAAAAoAP//AAAHAAUAAAAoAP3/AAAHAAUAAAAoAPz/AAAHAAUAAAAoAPv/AAAHAAUAAAAoAPr/AAAHAAUAAAAoAPn/AAAHAAUAAAAoAPj/AAAHAAUAAAA=")
+tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_bss38")
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
 position = Vector2(1054, 20)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("4_bss38")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-position = Vector2(13.5, -12)
-scale = Vector2(0.867188, 0.890625)
-texture = ExtResource("5_tda05")
+position = Vector2(27, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bss38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2(14, -11.75)
+texture_filter = 1
+position = Vector2(29, 9.5)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_qn3nj")
 
 [node name="fall" type="Area2D" parent="Enemy"]
@@ -434,4 +439,219 @@ shape = SubResource("RectangleShape2D_bss38")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Jump"]
 position = Vector2(86, 1)
+shape = SubResource("RectangleShape2D_tda05")
+
+[node name="Enemy2" type="CharacterBody2D" parent="."]
+position = Vector2(1109, -71)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_bss38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy2"]
+position = Vector2(27, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2"]
+texture_filter = 1
+position = Vector2(29, 9.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_qn3nj")
+
+[node name="fall" type="Area2D" parent="Enemy2"]
+position = Vector2(-77, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/fall"]
+position = Vector2(-4, 61)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Jump" type="Area2D" parent="Enemy2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy2/Jump"]
+position = Vector2(86, 1)
+shape = SubResource("RectangleShape2D_tda05")
+
+[node name="Enemy3" type="CharacterBody2D" parent="."]
+position = Vector2(2362, -318)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_bss38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy3"]
+position = Vector2(27, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3"]
+texture_filter = 1
+position = Vector2(29, 9.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_qn3nj")
+
+[node name="fall" type="Area2D" parent="Enemy3"]
+position = Vector2(-77, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/fall"]
+position = Vector2(-4, 61)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Jump" type="Area2D" parent="Enemy3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy3/Jump"]
+position = Vector2(86, 1)
+shape = SubResource("RectangleShape2D_tda05")
+
+[node name="Enemy4" type="CharacterBody2D" parent="."]
+position = Vector2(3909, -1324)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_bss38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy4"]
+position = Vector2(27, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy4"]
+texture_filter = 1
+position = Vector2(29, 9.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_qn3nj")
+
+[node name="fall" type="Area2D" parent="Enemy4"]
+position = Vector2(-77, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy4/fall"]
+position = Vector2(-4, 61)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Jump" type="Area2D" parent="Enemy4"]
+position = Vector2(88, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy4/Jump"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_tda05")
+
+[node name="Enemy5" type="CharacterBody2D" parent="."]
+position = Vector2(4110, -685)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_bss38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy5"]
+position = Vector2(27, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy5"]
+texture_filter = 1
+position = Vector2(29, 9.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_qn3nj")
+
+[node name="fall" type="Area2D" parent="Enemy5"]
+position = Vector2(-77, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy5/fall"]
+position = Vector2(-4, 61)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Jump" type="Area2D" parent="Enemy5"]
+position = Vector2(88, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy5/Jump"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_tda05")
+
+[node name="Enemy6" type="CharacterBody2D" parent="."]
+position = Vector2(4247, -258)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_bss38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy6"]
+position = Vector2(27, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy6"]
+texture_filter = 1
+position = Vector2(29, 9.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_qn3nj")
+
+[node name="fall" type="Area2D" parent="Enemy6"]
+position = Vector2(-77, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy6/fall"]
+position = Vector2(-4, 61)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Jump" type="Area2D" parent="Enemy6"]
+position = Vector2(88, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy6/Jump"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_tda05")
+
+[node name="Enemy7" type="CharacterBody2D" parent="."]
+position = Vector2(4854, -467)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_bss38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy7"]
+position = Vector2(27, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy7"]
+texture_filter = 1
+position = Vector2(29, 9.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_qn3nj")
+
+[node name="fall" type="Area2D" parent="Enemy7"]
+position = Vector2(-77, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy7/fall"]
+position = Vector2(-4, 61)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Jump" type="Area2D" parent="Enemy7"]
+position = Vector2(88, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy7/Jump"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_tda05")
+
+[node name="Enemy8" type="CharacterBody2D" parent="."]
+position = Vector2(3270, -644)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_bss38")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy8"]
+position = Vector2(27, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy8"]
+texture_filter = 1
+position = Vector2(29, 9.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_qn3nj")
+
+[node name="fall" type="Area2D" parent="Enemy8"]
+position = Vector2(-77, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy8/fall"]
+position = Vector2(-4, 61)
+shape = SubResource("RectangleShape2D_bss38")
+
+[node name="Jump" type="Area2D" parent="Enemy8"]
+position = Vector2(88, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy8/Jump"]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_tda05")
